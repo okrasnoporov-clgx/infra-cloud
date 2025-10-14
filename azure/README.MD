@@ -1,1 +1,4 @@
 ---
+Resources:
+VNet
+    Subnet
