@@ -1,4 +1,3 @@
----
 GCP Marketplace
 Deploymet Manager
 MIG
