@@ -11,7 +11,7 @@ Steps:
 
 PROVIDERS:
 
-az provider register --namespace Microsoft.Web --subscription 4b5f4da7-0329-47db-8f79-a64d15192d2c
+az provider register --namespace Microsoft.Web --subscription SUBSCRIBTION_ID
 
 resource_providers_to_register (azurerm >= 3.x):
 
