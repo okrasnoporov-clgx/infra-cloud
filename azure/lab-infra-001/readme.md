@@ -12,6 +12,8 @@ Steps:
 PROVIDERS:
 
 az provider register --namespace Microsoft.Web --subscription SUBSCRIBTION_ID
+az provider register --namespace Microsoft.DocumentDB --subscription SUBSCRIBTION_ID
+az provider register --namespace Microsoft.Quota --subscription SUBSCRIBTION_ID
 
 resource_providers_to_register (azurerm >= 3.x):
 
