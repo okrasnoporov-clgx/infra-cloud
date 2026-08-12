@@ -28,4 +28,10 @@ COSMOSDB MongoDB:
 Connection strings
 az cosmosdb keys list --name cosmos-dev-webservice --resource-group rg-dev-webservice --type connection-strings
 
+Check Mongo API versions and capabilities
+az cosmosdb show --name cosmos-dev-webservice --resource-group rg-dev-webservice --query "capabilities"
+az cosmosdb show --name cosmos-dev-webservice --resource-group rg-dev-webservice --query "{kind:kind, apiProperties:apiProperties}"
+az cosmosdb show --name cosmos-dev-webservice --resource-group rg-dev-webservice --query "{kind:kind, capabilities:capabilities, apiProperties:apiProperties}"
+
+
 
