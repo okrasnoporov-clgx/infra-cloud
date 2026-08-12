@@ -21,3 +21,11 @@ provider "azurerm" {
   features {}
   resource_providers_to_register = ["Microsoft.Web"]
 }
+
+
+COSMOSDB MongoDB:
+
+Connection strings
+az cosmosdb keys list --name cosmos-dev-webservice --resource-group rg-dev-webservice --type connection-strings
+
+
