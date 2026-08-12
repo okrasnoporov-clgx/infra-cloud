@@ -47,3 +47,9 @@ variable "purpose" {
   description = "Purpose of the Cosmos DB account"
   type        = string
 }
+
+variable "mongo_server_version" {
+  description = "MongoDB API version for Cosmos DB"
+  type        = string
+  default     = "4.2"
+}

@@ -4,6 +4,7 @@ resource "azurerm_cosmosdb_account" "cosmosdb" {
   location            = var.location
 
   kind       = "MongoDB"
+  mongo_server_version = var.mongo_server_version
   offer_type = "Standard"
   # Free Tier: 1000 RU/s + 25 GB (1 account per Subscription)
   free_tier_enabled = var.enable_free_tier
