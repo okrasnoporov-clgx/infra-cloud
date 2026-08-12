@@ -55,3 +55,26 @@ variable "webapp_app_settings" {
   type        = map(string)
   default     = {}
 }
+
+# ─── CosmosDB ────────────────────────────────────────────────────────────────
+
+variable "mongodb_database_name" {
+  description = "Name of the MongoDB database inside Cosmos DB"
+  type        = string
+}
+
+variable "cosmosdb_enable_free_tier" {
+  description = "Enable Cosmos DB Free Tier (1000 RU/s + 25 GB free). Only 1 per subscription allowed."
+  type        = bool
+}
+
+variable "cosmosdb_enable_serverless" {
+  description = "Enable Cosmos DB Serverless mode (pay-per-request). Alternative to Free Tier."
+  type        = bool
+}
+
+variable "cosmosdb_ip_range_filter" {
+  description = "Comma-separated list of IP ranges to allow access to Cosmos DB (empty = allow all Azure services)"
+  type        = string
+  default     = ""
+}

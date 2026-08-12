@@ -13,16 +13,7 @@ resource "azurerm_linux_web_app" "webapp" {
     always_on = false
   }
 
-  app_settings = merge(
-    {
-      # Включить Oryx build при деплое через zip (az webapp deploy)
-      "SCM_DO_BUILD_DURING_DEPLOYMENT" = "true"
-
-      # Порт на котором слушает FastAPI / uvicorn
-      "WEBSITES_PORT" = "8000"
-    },
-    var.app_settings
-  )
+  app_settings = var.app_settings
 
   tags = {
     environment = var.environment

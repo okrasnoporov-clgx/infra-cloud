@@ -10,6 +10,8 @@ module "service-plans" {
   sp_sku_name = var.sp_sku_name
 }
 
+
+
 module "web-apps" {
   source = "./modules/web-apps"
 
@@ -19,5 +21,17 @@ module "web-apps" {
   service_plan_id = module.service-plans.id
   python_version  = var.python_version
   environment     = var.environment
-  app_settings    = var.webapp_app_settings
+  app_settings = merge(
+    var.webapp_app_settings,
+    {
+      # Enable Oryx build  using zip deploy (az webapp deploy)
+      "SCM_DO_BUILD_DURING_DEPLOYMENT" = "true"
+      # Port on which FastAPI / uvicorn listens
+      "WEBSITES_PORT" = "8000"
+
+      # CosmosDB settings
+      "MONGODB_CONNECTION_STRING" = module.cosmosdb.primary_mongodb_connection_string
+      "MONGODB_DATABASE"          = var.mongodb_database_name
+    }
+  )
 }
