@@ -59,7 +59,6 @@ resource "azurerm_function_app_flex_consumption" "this" {
     {
       # Required by the AzureRM provider for Flex Consumption. Deployment storage
       # is configured above, rather than through AzureWebJobsStorage.
-      AzureWebJobsStorage = ""
     }
   )
 
