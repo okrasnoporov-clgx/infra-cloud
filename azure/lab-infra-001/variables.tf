@@ -78,3 +78,9 @@ variable "cosmosdb_ip_range_filter" {
   type        = string
   default     = ""
 }
+
+variable "mongo_server_version" {
+  description = "MongoDB API version for Cosmos DB"
+  type        = string
+  default     = "4.2"
+}
