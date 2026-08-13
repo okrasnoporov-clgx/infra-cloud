@@ -71,3 +71,29 @@ output "cosmosdb_connection_string" {
   sensitive   = true
 }
 
+output "function_app_id" {
+  description = "ID of the Flex Consumption Function App."
+  value       = module.function_app.id
+}
+
+output "function_app_name" {
+  description = "Name of the Flex Consumption Function App."
+  value       = module.function_app.name
+}
+
+output "function_app_url" {
+  description = "Default HTTPS URL of the Function App."
+  value       = "https://${module.function_app.default_hostname}"
+}
+
+output "function_flex_plan_id" {
+  description = "ID of the mandatory FC1 Flex Consumption plan."
+  value       = module.function_app.service_plan_id
+}
+
+output "function_storage_account_name" {
+  description = "Storage Account used for Function App deployment packages."
+  value       = module.function_app.storage_account_name
+}
+
+# ─── Functions ────────────────────────────────────────────────────────────────

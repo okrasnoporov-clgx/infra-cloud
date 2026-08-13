@@ -56,6 +56,42 @@ variable "webapp_app_settings" {
   default     = {}
 }
 
+# Azure Functions (Flex Consumption)
+
+variable "function_app_name" {
+  description = "Globally unique name of the Azure Function App."
+  type        = string
+}
+
+variable "function_storage_account_name" {
+  description = "Globally unique, lowercase Storage Account name for the Function App."
+  type        = string
+}
+
+variable "function_python_version" {
+  description = "Python runtime version for the Flex Consumption Function App."
+  type        = string
+  default     = "3.11"
+}
+
+variable "function_app_settings" {
+  description = "Additional application settings for the Function App."
+  type        = map(string)
+  default     = {}
+}
+
+variable "function_instance_memory_in_mb" {
+  description = "Memory per Flex Consumption instance in MB."
+  type        = number
+  default     = 512
+}
+
+variable "function_maximum_instance_count" {
+  description = "Maximum number of Function App instances."
+  type        = number
+  default     = 10
+}
+
 # ─── CosmosDB ────────────────────────────────────────────────────────────────
 
 variable "mongodb_database_name" {

@@ -24,6 +24,12 @@ variable "python_version" {
   default     = "3.11"
 }
 
+variable "app_command_line" {
+  description = "Optional startup command for the Linux Web App."
+  type        = string
+  default     = null
+}
+
 variable "environment" {
   description = "Deployment environment"
   type        = string

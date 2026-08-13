@@ -1,0 +1,30 @@
+TYPICAL ERRORS:
+
+MISSING AZURE PROVIDER:
+
+Plan: 4 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + function_app_id               = (known after apply)
+  + function_app_name             = "func-dev-webservice"
+  + function_app_url              = (known after apply)
+  + function_flex_plan_id         = (known after apply)
+  + function_storage_account_name = "stfuncdevwebservice"
+module.function_app.azurerm_service_plan.this: Creating...
+module.function_app.azurerm_storage_account.this: Creating...
+module.function_app.azurerm_service_plan.this: Still creating... [00m10s elapsed]
+module.function_app.azurerm_service_plan.this: Creation complete after 17s [id=/subscriptions/4b5f4da7-0329-47db-8f79-a64d15192d2c/resourceGroups/rg-dev-webservice/providers/Microsoft.Web/serverFarms/func-dev-webservice-plan]
+╷
+│ Error: creating Storage Account (Subscription: "4b5f4da7-0329-47db-8f79-a64d15192d2c"
+│ Resource Group Name: "rg-dev-webservice"
+│ Storage Account Name: "stfuncdevwebservice"): performing Create: unexpected status 409 (409 Conflict) with error: MissingSubscriptionRegistration: The subscription is not registered to use namespace 'Microsoft.Storage'. See https://aka.ms/rps-not-found for how to register subscriptions.
+│
+│   with module.function_app.azurerm_storage_account.this,
+│   on modules\function-app\main.tf line 13, in resource "azurerm_storage_account" "this":
+│   13: resource "azurerm_storage_account" "this" {
+
+
+    ---------------------------------------------------------------------------------------------
+
+
+    
