@@ -96,4 +96,21 @@ output "function_storage_account_name" {
   value       = module.function_app.storage_account_name
 }
 
+# ─── Key Vault ────────────────────────────────────────────────────────────────
+
+output "key_vault_id" {
+  description = "ID of the Key Vault"
+  value       = module.key-vault.id
+}
+
+output "key_vault_name" {
+  description = "Name of the Key Vault"
+  value       = module.key-vault.name
+}
+
+output "key_vault_uri" {
+  description = "URI of the Key Vault"
+  value       = module.key-vault.vault_uri
+}
+
 # ─── Functions ────────────────────────────────────────────────────────────────
