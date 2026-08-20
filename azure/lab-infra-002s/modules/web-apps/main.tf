@@ -13,6 +13,20 @@ resource "azurerm_linux_web_app" "webapp" {
 
     # always_on не поддерживается на F1 (Free tier)
     always_on = false
+
+    ip_restriction_default_action = var.ip_restriction_default_action
+    scm_use_main_ip_restriction   = true
+
+    dynamic "ip_restriction" {
+      for_each = var.ip_restrictions
+
+      content {
+        name       = ip_restriction.value.name
+        priority   = ip_restriction.value.priority
+        action     = ip_restriction.value.action
+        ip_address = ip_restriction.value.ip_address
+      }
+    }
   }
 
   app_settings = var.app_settings

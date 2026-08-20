@@ -40,3 +40,24 @@ variable "app_settings" {
   type        = map(string)
   default     = {}
 }
+
+variable "ip_restriction_default_action" {
+  description = "Default action for unmatched inbound requests."
+  type        = string
+
+  validation {
+    condition     = contains(["Allow", "Deny"], var.ip_restriction_default_action)
+    error_message = "ip_restriction_default_action must be Allow or Deny."
+  }
+}
+
+variable "ip_restrictions" {
+  description = "Allowed or denied public IP/CIDR rules for the Web App."
+  type = list(object({
+    name       = string
+    priority   = number
+    action     = string
+    ip_address = string
+  }))
+  default = []
+}

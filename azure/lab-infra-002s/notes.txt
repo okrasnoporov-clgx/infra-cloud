@@ -1,30 +1,16 @@
 TYPICAL ERRORS:
 
-MISSING AZURE PROVIDER:
+### missing a delegation to Microsoft.Web/serverFarms
 
-Plan: 4 to add, 0 to change, 0 to destroy.
 
-Changes to Outputs:
-  + function_app_id               = (known after apply)
-  + function_app_name             = "func-dev-webservice"
-  + function_app_url              = (known after apply)
-  + function_flex_plan_id         = (known after apply)
-  + function_storage_account_name = "stfuncdevwebservice"
-module.function_app.azurerm_service_plan.this: Creating...
-module.function_app.azurerm_storage_account.this: Creating...
-module.function_app.azurerm_service_plan.this: Still creating... [00m10s elapsed]
-module.function_app.azurerm_service_plan.this: Creation complete after 17s [id=/subscriptions/4b5f4da7-0329-47db-8f79-a64d15192d2c/resourceGroups/rg-dev-webservice/providers/Microsoft.Web/serverFarms/func-dev-webservice-plan]
-╷
-│ Error: creating Storage Account (Subscription: "4b5f4da7-0329-47db-8f79-a64d15192d2c"
+
+│ Error: creating association between App Service (Subscription: "4b5f4da7-0329-47db-8f79-a64d15192d2c"
 │ Resource Group Name: "rg-dev-webservice"
-│ Storage Account Name: "stfuncdevwebservice"): performing Create: unexpected status 409 (409 Conflict) with error: MissingSubscriptionRegistration: The subscription is not registered to use namespace 'Microsoft.Storage'. See https://aka.ms/rps-not-found for how to register subscriptions.
+│ Site Name: "app-dev-webservice") and Subnet (Subscription: "4b5f4da7-0329-47db-8f79-a64d15192d2c"
+│ Resource Group Name: "rg-dev-webservice"
+│ Virtual Network Name: "vnet-dev"
+│ Subnet Name: "subnet-appservice-integration"): unexpected status 400 (400 Bad Request) with response: {"Code":"BadRequest","Message":"Subnet vnet-dev in VNET subnet-appservice-integration is missing a delegation to Microsoft.Web/serverFarms. Please add the delegation and try again.","Target":null,"Details":[{"Message":"Subnet vnet-dev in VNET subnet-appservice-integration is missing a delegation to Microsoft.Web/serverFarms. Please add the delegation and try again."},{"Code":"BadRequest"},{"ErrorEntity":{"ExtendedCode":"55928","MessageTemplate":"Subnet {0} in VNET {1} is missing a delegation to {2}. Please add the delegation and try again.","Parameters":["vnet-dev","subnet-appservice-integration","Microsoft.Web/serverFarms"],"Code":"BadRequest","Message":"Subnet vnet-dev in VNET subnet-appservice-integration is missing a delegation to Microsoft.Web/serverFarms. Please add the delegation and try again."}}],"Innererror":null}
 │
-│   with module.function_app.azurerm_storage_account.this,
-│   on modules\function-app\main.tf line 13, in resource "azurerm_storage_account" "this":
-│   13: resource "azurerm_storage_account" "this" {
-
-
-    ---------------------------------------------------------------------------------------------
-
-
-    
+│   with azurerm_app_service_virtual_network_swift_connection.webapp,
+│   on az_service_plans_webapps.tf line 27, in resource "azurerm_app_service_virtual_network_swift_connection" "webapp":
+│   27: resource "azurerm_app_service_virtual_network_swift_connection" "webapp" {

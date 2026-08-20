@@ -50,6 +50,10 @@ variable "vnet_subnets" {
   type = map(object({
     name             = string
     address_prefixes = list(string)
+    delegations = list(object({
+      name    = string
+      actions = list(string)
+    }))
   }))
 }
 
@@ -72,6 +76,23 @@ variable "webapp_app_settings" {
   description = "Additional application settings for the Web App (key-value pairs)"
   type        = map(string)
   default     = {}
+}
+
+variable "webapp_ip_restriction_default_action" {
+  description = "Default action for unmatched inbound requests to the Web App."
+  type        = string
+  default     = "Deny"
+}
+
+variable "webapp_ip_restrictions" {
+  description = "Access restriction rules for the Web App."
+  type = list(object({
+    name       = string
+    priority   = number
+    action     = string
+    ip_address = string
+  }))
+  default = []
 }
 
 # Azure Functions (Flex Consumption)

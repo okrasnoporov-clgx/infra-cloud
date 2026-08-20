@@ -2,7 +2,6 @@ output "management_group_id" {
   description = "ID of management group"
   value       = module.management_groups.id
 }
-
 output "management_group_name" {
   description = "Name of management group"
   value       = module.management_groups.name

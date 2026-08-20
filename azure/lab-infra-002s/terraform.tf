@@ -13,7 +13,13 @@ provider "azurerm" {
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
   features {}
-  resource_providers_to_register = ["Microsoft.Web", "Microsoft.Quota", "Microsoft.DocumentDB", 
-    "Microsoft.Storage", "Microsoft.KeyVault", "Microsoft.Network"]
+  resource_providers_to_register = [
+    "Microsoft.Web",
+    "Microsoft.Quota",
+    "Microsoft.DocumentDB",
+    "Microsoft.Storage",
+    "Microsoft.KeyVault",
+    "Microsoft.Network"
+  ]
 
 }
