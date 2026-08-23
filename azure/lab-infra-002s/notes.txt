@@ -1,0 +1,16 @@
+TYPICAL ERRORS:
+
+### missing a delegation to Microsoft.Web/serverFarms
+
+
+
+│ Error: creating association between App Service (Subscription: "4b5f4da7-0329-47db-8f79-a64d15192d2c"
+│ Resource Group Name: "rg-dev-webservice"
+│ Site Name: "app-dev-webservice") and Subnet (Subscription: "4b5f4da7-0329-47db-8f79-a64d15192d2c"
+│ Resource Group Name: "rg-dev-webservice"
+│ Virtual Network Name: "vnet-dev"
+│ Subnet Name: "subnet-appservice-integration"): unexpected status 400 (400 Bad Request) with response: {"Code":"BadRequest","Message":"Subnet vnet-dev in VNET subnet-appservice-integration is missing a delegation to Microsoft.Web/serverFarms. Please add the delegation and try again.","Target":null,"Details":[{"Message":"Subnet vnet-dev in VNET subnet-appservice-integration is missing a delegation to Microsoft.Web/serverFarms. Please add the delegation and try again."},{"Code":"BadRequest"},{"ErrorEntity":{"ExtendedCode":"55928","MessageTemplate":"Subnet {0} in VNET {1} is missing a delegation to {2}. Please add the delegation and try again.","Parameters":["vnet-dev","subnet-appservice-integration","Microsoft.Web/serverFarms"],"Code":"BadRequest","Message":"Subnet vnet-dev in VNET subnet-appservice-integration is missing a delegation to Microsoft.Web/serverFarms. Please add the delegation and try again."}}],"Innererror":null}
+│
+│   with azurerm_app_service_virtual_network_swift_connection.webapp,
+│   on az_service_plans_webapps.tf line 27, in resource "azurerm_app_service_virtual_network_swift_connection" "webapp":
+│   27: resource "azurerm_app_service_virtual_network_swift_connection" "webapp" {

@@ -68,3 +68,16 @@ globaldb [primary] test> db.runCommand({ buildInfo: 1 })
 
 globaldb [primary] test> show dbs
 appdb  1.00 KiB
+
+
+
+Summary:
+Resources (non secured and public available):
+app-dev-webservice             App Service    Central US
+cosmos-dev-webservice          Azure Cosmos DB for MongoDB account (RU)  Central US
+func-dev-webservice            Function App   Central US
+func-dev-webservice-plan       App Service plan  Central US
+kv-dev-webservice              Key vault  Central US
+sp-dev-webservice              App Service plan  Central US
+stfuncdevwebservice            Storage account  Central US
+stfuncdevwebservice-545abfdc-9101-4ee0-9e4c-8df4dfdc4bc3   Event Grid System Topic   Central US
