@@ -1,0 +1,43 @@
+### ECS Express createing error
+
+│ Error: operation error ECS:
+│
+│   with module.ecs_express.aws_ecs_express_gateway_service.this,
+│   on modules\ecs_express\main.tf line 1, in resource "aws_ecs_express_gateway_service" "this":
+│    1: resource "aws_ecs_express_gateway_service" "this" {
+│
+│ operation error ECS: CreateExpressGatewayService, https response error StatusCode: 400, RequestID: 21665511-7049-47de-8b74-70fe9f071119, ClientException: You are not
+│ authorized to perform this operation. User: arn:aws:sts::601837536913:assumed-role/ecs-express-dev-infrastructure/ECSWebService is not authorized to perform:
+│ ec2:DescribeVpcs because 
+no identity-based policy allows the ec2:DescribeVpcs action (Service: Ec2, Status Code: 403, Request ID: c050f4c4-e8ac-4e6a-9f04-934e3a20e4d4) (SDK
+│ Attempt Count: 1) [smarterr summary template error: template "error_summary" not found] [smarterr detail template error: template "error_detail" not found]
+
+
+│ Error: operation error ECS:
+│
+│   with module.ecs_express.aws_ecs_express_gateway_service.this,
+│   on modules\ecs_express\main.tf line 1, in resource "aws_ecs_express_gateway_service" "this":
+│    1: resource "aws_ecs_express_gateway_service" "this" {
+│
+│ operation error ECS: CreateExpressGatewayService, https response error StatusCode: 400, RequestID: ef86763b-0205-40f8-a75a-6ca9fa023429, ClientException: You are not
+│ authorized to perform this operation. User: arn:aws:sts::601837536913:assumed-role/ecs-express-dev-infrastructure/ECSWebService is not authorized to perform:
+│ ec2:DescribeRouteTables because 
+no identity-based policy allows the ec2:DescribeRouteTables action (Service: Ec2, Status Code: 403, Request ID:
+│ 1a13e3c5-7c55-4b00-8971-f02b67006b07) (SDK Attempt Count: 1) [smarterr summary template error: template "error_summary" not found] [smarterr detail template error: template
+│ "error_detail" not found]
+
+
+### ECS info
+
+aws ecs describe-express-gateway-service --service-arn arn:aws:ecs:eu-central-1:601837536913:service/default/ecs-express-dev-01 --region eu-central-1
+
+
+$env:AWS_PAGER = ""
+aws ecs describe-service-deployments `
+  --service-deployment-arns arn:aws:ecs:eu-central-1:601837536913:service-deployment/default/ecs-express-dev-01/xjA5dy6OGj9xzdWeO2Ck4 `
+  --region eu-central-1 `
+  --profile terraform `
+  --query "serviceDeployments[0].{Status:status,Reason:failureReason}" `
+  --output json
+
+aws acm describe-certificate --certificate-arn arn:aws:acm:eu-central-1:601837536913:certificate/de0c2f09-b762-4f73-b08c-68797fa15650 --region eu-central-1  

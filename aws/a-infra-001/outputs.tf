@@ -37,3 +37,18 @@ output "subnet_vpc_id" {
   description = "ID of the VPC containing the subnet"
   value       = module.vpc_subnet.vpc_id
 }
+
+output "ecs_express_service_arn" {
+  description = "ARN of the ECS Express Gateway service"
+  value       = module.ecs_express.service_arn
+}
+
+output "ecs_express_service_revision_arn" {
+  description = "ARN of the current ECS Express service revision"
+  value       = module.ecs_express.service_revision_arn
+}
+
+output "ecs_express_ingress_paths" {
+  description = "Ingress paths exposed by the ECS Express Gateway service"
+  value       = module.ecs_express.ingress_paths
+}

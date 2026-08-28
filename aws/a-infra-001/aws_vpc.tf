@@ -18,3 +18,4 @@ module "vpc_subnet" {
   map_public_ip_on_launch = var.subnet_map_public_ip_on_launch
   tags                    = var.subnet_tags
 }
+
