@@ -1,3 +1,14 @@
+### IAM
+
+AWS Security Token Service (STS)
+aws sts get-caller-identity
+
+
+### S3 info
+
+aws s3control get-access-point-policy --account-id 601xxxx913 --name okXxxxxxx01
+
+
 ### ECS Express createing error
 
 │ Error: operation error ECS:

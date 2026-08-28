@@ -38,6 +38,23 @@ output "subnet_vpc_id" {
   value       = module.vpc_subnet.vpc_id
 }
 
+### ----------- S3 --------------
+
+output "s3_bucket_id" {
+  description = "ID of the S3 bucket"
+  value       = module.s3.id
+}
+
+output "s3_bucket_arn" {
+  description = "ARN of the S3 bucket"
+  value       = module.s3.arn
+}
+
+output "s3_bucket_domain_name" {
+  description = "Regional domain name of the S3 bucket"
+  value       = module.s3.bucket_domain_name
+}
+
 ### ----------- ECS EXPRESS --------------
 
 # output "ecs_express_service_arn" {

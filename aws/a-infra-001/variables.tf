@@ -77,6 +77,63 @@ variable "iam_roles" {
   }))
 }
 
+### ----------- S3 --------------
+
+variable "s3_bucket_name" {
+  description = "Name of the S3 bucket"
+  type        = string
+}
+
+variable "s3_force_destroy" {
+  description = "Whether to delete all objects when the bucket is destroyed"
+  type        = bool
+}
+
+variable "s3_versioning_enabled" {
+  description = "Whether versioning is enabled for the S3 bucket"
+  type        = bool
+}
+
+variable "s3_storage_class" {
+  description = "S3 storage class for objects after the transition period"
+  type        = string
+}
+
+variable "s3_storage_class_transition_days" {
+  description = "Number of days before objects transition to the selected storage class"
+  type        = number
+}
+
+variable "s3_encryption_algorithm" {
+  description = "Server-side encryption algorithm for the S3 bucket"
+  type        = string
+}
+
+variable "s3_block_public_acls" {
+  description = "Whether public ACLs are blocked"
+  type        = bool
+}
+
+variable "s3_block_public_policy" {
+  description = "Whether public bucket policies are blocked"
+  type        = bool
+}
+
+variable "s3_ignore_public_acls" {
+  description = "Whether public ACLs are ignored"
+  type        = bool
+}
+
+variable "s3_restrict_public_buckets" {
+  description = "Whether public bucket policies are restricted"
+  type        = bool
+}
+
+variable "s3_tags" {
+  description = "Additional tags for the S3 bucket"
+  type        = map(string)
+}
+
 
 ### ----------- ECS EXPRESS --------------
 
