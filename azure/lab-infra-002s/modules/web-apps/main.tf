@@ -1,11 +1,13 @@
 resource "azurerm_linux_web_app" "webapp" {
-  name                = var.webapp_name
-  resource_group_name = var.rg_name
-  location            = var.location
-  service_plan_id     = var.service_plan_id
+  name                      = var.webapp_name
+  resource_group_name       = var.rg_name
+  location                  = var.location
+  service_plan_id           = var.service_plan_id
+  virtual_network_subnet_id = var.vnet_integration_subnet_id
 
   site_config {
-    app_command_line = var.app_command_line
+    app_command_line       = var.app_command_line
+    vnet_route_all_enabled = var.vnet_route_all_enabled
 
     application_stack {
       python_version = var.python_version

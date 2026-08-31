@@ -18,6 +18,18 @@ variable "service_plan_id" {
   type        = string
 }
 
+variable "vnet_integration_subnet_id" {
+  description = "Subnet ID used for App Service VNet integration."
+  type        = string
+  default     = null
+}
+
+variable "vnet_route_all_enabled" {
+  description = "Route all outbound traffic from the App Service through the VNet integration subnet."
+  type        = bool
+  default     = true
+}
+
 variable "python_version" {
   description = "Python runtime version (e.g. '3.11', '3.12')"
   type        = string
