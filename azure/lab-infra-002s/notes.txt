@@ -14,3 +14,13 @@ TYPICAL ERRORS:
 │   with azurerm_app_service_virtual_network_swift_connection.webapp,
 │   on az_service_plans_webapps.tf line 27, in resource "azurerm_app_service_virtual_network_swift_connection" "webapp":
 │   27: resource "azurerm_app_service_virtual_network_swift_connection" "webapp" {
+
+
+
+
+
+DEBUG PEP of cosmosDB for WebApp:
+
+nslookup cosmos-dev-webservice.mongo.cosmos.azure.com
+
+

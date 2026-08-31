@@ -18,6 +18,8 @@ module "web-apps" {
   rg_name                       = module.resource-groups.name
   location                      = var.location
   service_plan_id               = module.service-plans.id
+  vnet_integration_subnet_id    = module.vnet.subnet_ids["appservice_integration"]
+  vnet_route_all_enabled        = var.webapp_vnet_route_all_enabled
   python_version                = var.python_version
   environment                   = var.environment
   app_command_line              = "python -m uvicorn service:app --host 0.0.0.0 --port 8000"

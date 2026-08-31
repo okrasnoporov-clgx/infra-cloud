@@ -1,23 +1,23 @@
 variable "sp_name" {
-    type = string
+  type = string
 }
 
 variable "environment" {
-    type = string
+  type = string
 }
 
 variable "sp_os_type" {
-    type = string
+  type = string
 }
 
 variable "sp_sku_name" {
-    type = string
+  type = string
 }
 
 variable "location" {
-    type = string
+  type = string
 }
 
 variable "rg_name" {
-    type = string
+  type = string
 }

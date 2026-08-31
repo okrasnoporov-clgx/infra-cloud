@@ -54,13 +54,7 @@ resource "azurerm_function_app_flex_consumption" "this" {
     minimum_tls_version = "1.2"
   }
 
-  app_settings = merge(
-    var.app_settings,
-    {
-      # Required by the AzureRM provider for Flex Consumption. Deployment storage
-      # is configured above, rather than through AzureWebJobsStorage.
-    }
-  )
+  app_settings = var.app_settings
 
   tags = local.tags
 }

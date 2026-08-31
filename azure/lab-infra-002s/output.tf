@@ -59,6 +59,26 @@ output "webapp_url" {
   value       = "https://${module.web-apps.default_hostname}"
 }
 
+output "cosmosdb_private_endpoint_id" {
+  description = "ID of the Cosmos DB private endpoint"
+  value       = module.cosmosdb_private_endpoint.id
+}
+
+output "cosmosdb_private_endpoint_name" {
+  description = "Name of the Cosmos DB private endpoint"
+  value       = module.cosmosdb_private_endpoint.name
+}
+
+output "cosmosdb_private_endpoint_private_ip" {
+  description = "Private IP address assigned to the Cosmos DB private endpoint"
+  value       = module.cosmosdb_private_endpoint.private_ip_address
+}
+
+output "cosmosdb_private_dns_zone_id" {
+  description = "ID of the private DNS zone associated with the Cosmos DB private endpoint"
+  value       = azurerm_private_dns_zone.cosmosdb_mongo.id
+}
+
 # ─── CosmosDB ────────────────────────────────────────────────────────────────
 
 output "cosmosdb_id" {

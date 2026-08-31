@@ -95,6 +95,54 @@ variable "webapp_ip_restrictions" {
   default = []
 }
 
+variable "webapp_vnet_route_all_enabled" {
+  description = "Route all outbound traffic from the Web App through the VNet integration subnet."
+  type        = bool
+  default     = true
+}
+
+variable "cosmosdb_private_endpoint_name" {
+  description = "Name of the Cosmos DB private endpoint."
+  type        = string
+  default     = "pep-cosmosdb"
+}
+
+variable "cosmosdb_private_endpoint_connection_name" {
+  description = "Name of the private service connection for the Cosmos DB private endpoint."
+  type        = string
+  default     = "cosmosdb-private-connection"
+}
+
+variable "cosmosdb_private_endpoint_subresource_names" {
+  description = "Subresources exposed through the Cosmos DB private endpoint."
+  type        = list(string)
+  default     = ["MongoDB"]
+}
+
+variable "cosmosdb_private_endpoint_private_dns_zone_group_name" {
+  description = "Name of the private DNS zone group attached to the Cosmos DB private endpoint."
+  type        = string
+  default     = "cosmosdb-dns-zone-group"
+}
+
+variable "cosmosdb_private_endpoint_tags" {
+  description = "Tags applied to the Cosmos DB private endpoint."
+  type        = map(string)
+  default     = {}
+}
+
+variable "cosmosdb_private_dns_zone_name" {
+  description = "Private DNS zone name used for the Cosmos DB private endpoint."
+  type        = string
+  default     = "privatelink.mongo.cosmos.azure.com"
+}
+
+variable "cosmosdb_private_dns_link_name" {
+  description = "Name of the private DNS zone VNet link for the Cosmos DB private endpoint."
+  type        = string
+  default     = "vnet-cosmosdb-dns-link"
+}
+
 # Azure Functions (Flex Consumption)
 
 variable "function_app_name" {
