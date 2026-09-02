@@ -101,6 +101,110 @@ variable "webapp_vnet_route_all_enabled" {
   default     = true
 }
 
+variable "application_gateway_name" {
+  description = "Name of the Azure Application Gateway."
+  type        = string
+}
+
+variable "application_gateway_public_ip_name" {
+  description = "Name of the public IP used by the Application Gateway."
+  type        = string
+}
+
+variable "application_gateway_subnet_key" {
+  description = "Key of the dedicated Application Gateway subnet in vnet_subnets."
+  type        = string
+}
+
+variable "application_gateway_sku_name" {
+  type = string
+}
+
+variable "application_gateway_sku_tier" {
+  type = string
+}
+
+variable "application_gateway_sku_capacity" {
+  type = number
+}
+
+variable "application_gateway_gateway_ip_configuration_name" {
+  type = string
+}
+
+variable "application_gateway_frontend_port_name" {
+  type = string
+}
+
+variable "application_gateway_frontend_port" {
+  type = number
+}
+
+variable "application_gateway_frontend_ip_configuration_name" {
+  type = string
+}
+
+variable "application_gateway_backend_pool_name" {
+  type = string
+}
+
+variable "application_gateway_probe_name" {
+  type = string
+}
+
+variable "application_gateway_probe_path" {
+  type = string
+}
+
+variable "application_gateway_probe_interval" {
+  type = number
+}
+
+variable "application_gateway_probe_timeout" {
+  type = number
+}
+
+variable "application_gateway_probe_unhealthy_threshold" {
+  type = number
+}
+
+variable "application_gateway_backend_http_settings_name" {
+  type = string
+}
+
+variable "application_gateway_backend_port" {
+  type = number
+}
+
+variable "application_gateway_backend_protocol" {
+  type = string
+}
+
+variable "application_gateway_request_timeout" {
+  type = number
+}
+
+variable "application_gateway_http_listener_name" {
+  type = string
+}
+
+variable "application_gateway_listener_protocol" {
+  type = string
+}
+
+variable "application_gateway_request_routing_rule_name" {
+  type = string
+}
+
+variable "application_gateway_request_routing_rule_priority" {
+  type = number
+}
+
+variable "application_gateway_tags" {
+  type    = map(string)
+  default = {}
+}
+
 variable "cosmosdb_private_endpoint_name" {
   description = "Name of the Cosmos DB private endpoint."
   type        = string

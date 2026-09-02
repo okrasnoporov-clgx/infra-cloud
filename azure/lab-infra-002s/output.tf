@@ -59,6 +59,21 @@ output "webapp_url" {
   value       = "https://${module.web-apps.default_hostname}"
 }
 
+output "application_gateway_id" {
+  description = "ID of the Azure Application Gateway."
+  value       = module.application_gateway.id
+}
+
+output "application_gateway_name" {
+  description = "Name of the Azure Application Gateway."
+  value       = module.application_gateway.name
+}
+
+output "application_gateway_public_ip" {
+  description = "Public IP address of the Azure Application Gateway."
+  value       = module.application_gateway.public_ip_address
+}
+
 output "cosmosdb_private_endpoint_id" {
   description = "ID of the Cosmos DB private endpoint"
   value       = module.cosmosdb_private_endpoint.id
