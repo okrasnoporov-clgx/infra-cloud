@@ -17,6 +17,29 @@ TYPICAL ERRORS:
 
 
 
+### NETWORK RESTRICTIONS
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+module.web-apps.azurerm_linux_web_app.webapp: Modifying... [id=/subscriptions/4b5f******************92d2c/resourceGroups/rg-dev-webservice/providers/Microsoft.Web/sites/app-dev-webservice]
+╷
+│ Error: updating Linux App Service (Subscription: "4b5f*******************d2c"
+│ Resource Group Name: "rg-dev-webservice"
+│ Site Name: "app-dev-webservice"): performing CreateOrUpdate: unexpected status 400 (400 Bad Request) with response: {"Code":"BadRequest","Message":"The parameter 'IpSecurityRestriction.Name' has an invalid value. Details: Name exceeds 32 characters.","Target":null,"Details":[{"Message":"The parameter 'IpSecurityRestriction.Name' has an invalid value. Details: Name exceeds 32 characters."},{"Code":"BadRequest"},{"ErrorEntity":{"ExtendedCode":"01033","MessageTemplate":"The parameter '{0}' has an invalid value. Details: {1}.","Parameters":["IpSecurityRestriction.Name","Name exceeds 32 characters"],"Code":"BadRequest","Message":"The parameter 'IpSecurityRestriction.Name' has an invalid value. Details: Name exceeds 32 characters."}}],"Innererror":null}
+│
+│   with module.web-apps.azurerm_linux_web_app.webapp,
+│   on modules\web-apps\main.tf line 1, in resource "azurerm_linux_web_app" "webapp":
+│    1: resource "azurerm_linux_web_app" "webapp" {
+│
+│ updating Linux App Service (Subscription: "4b5f***************92d2c"
+│ Resource Group Name: "rg-dev-webservice"
+│ Site Name: "app-dev-webservice"): performing CreateOrUpdate: unexpected status 400 (400 Bad Request) with response: {"Code":"BadRequest","Message":"The parameter 'IpSecurityRestriction.Name' has an invalid
+│ value. Details: Name exceeds 32 characters.","Target":null,"Details":[{"Message":"The parameter 'IpSecurityRestriction.Name' has an invalid value. Details: Name exceeds 32
+│ characters."},{"Code":"BadRequest"},{"ErrorEntity":{"ExtendedCode":"01033","MessageTemplate":"The parameter '{0}' has an invalid value. Details: {1}.","Parameters":["IpSecurityRestriction.Name","Name
+│ exceeds 32 characters"],"Code":"BadRequest","Message":"The parameter 'IpSecurityRestriction.Name' has an invalid value. Details: Name exceeds 32 characters."}}],"Innererror":null}
+
+
+
+
 
 
 DEBUG PEP of cosmosDB for WebApp:
