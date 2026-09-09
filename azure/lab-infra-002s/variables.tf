@@ -82,11 +82,10 @@ variable "webapp_swift_integration" {
   description = "Optional Swift VNet integration settings for the Web App."
   type = object({
     enabled   = bool
-    subnet_id = string
+    subnet_id = optional(string)
   })
   default = {
-    enabled   = false
-    subnet_id = null
+    enabled = false
   }
 }
 

@@ -26,7 +26,10 @@ module "web-apps" {
   app_settings                  = var.webapp_app_settings
   ip_restriction_default_action = var.webapp_ip_restriction_default_action
   ip_restrictions               = var.webapp_ip_restrictions
-  webapp_swift_integration      = var.webapp_swift_integration
+  webapp_swift_integration = {
+    enabled   = var.webapp_swift_integration.enabled
+    subnet_id = module.vnet.subnet_ids["appservice_integration"]
+  }
 }
 
 # moved {
