@@ -26,9 +26,13 @@ module "web-apps" {
   app_settings                  = var.webapp_app_settings
   ip_restriction_default_action = var.webapp_ip_restriction_default_action
   ip_restrictions               = var.webapp_ip_restrictions
+  webapp_swift_integration = {
+    enabled   = true
+    subnet_id = module.vnet.subnet_ids["appservice_integration"]
+  }
 }
 
-resource "azurerm_app_service_virtual_network_swift_connection" "webapp" {
-  app_service_id = module.web-apps.id
-  subnet_id      = module.vnet.subnet_ids["appservice_integration"]
+moved {
+  from = azurerm_app_service_virtual_network_swift_connection.webapp
+  to   = module.web-apps.azurerm_app_service_virtual_network_swift_connection.webapp[0]
 }

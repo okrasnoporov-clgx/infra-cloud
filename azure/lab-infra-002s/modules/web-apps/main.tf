@@ -38,3 +38,10 @@ resource "azurerm_linux_web_app" "webapp" {
     managed_by  = "terraform"
   }
 }
+
+resource "azurerm_app_service_virtual_network_swift_connection" "webapp" {
+  count = var.webapp_swift_integration.enabled ? 1 : 0
+
+  app_service_id = azurerm_linux_web_app.webapp.id
+  subnet_id      = var.webapp_swift_integration.subnet_id
+}
