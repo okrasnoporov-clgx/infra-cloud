@@ -73,6 +73,23 @@ variable "sp_sku_name" {
   type        = string
 }
 
+variable "webapp_name" {
+  description = "Name of the Azure Web App."
+  type        = string
+}
+
+variable "webapp_swift_integration" {
+  description = "Optional Swift VNet integration settings for the Web App."
+  type = object({
+    enabled   = bool
+    subnet_id = string
+  })
+  default = {
+    enabled   = false
+    subnet_id = null
+  }
+}
+
 variable "python_version" {
   description = "Python runtime version for the Web App (e.g. '3.11', '3.12')"
   type        = string
