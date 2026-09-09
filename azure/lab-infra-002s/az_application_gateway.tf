@@ -30,5 +30,5 @@ module "application_gateway" {
   listener_protocol              = var.application_gateway_listener_protocol
   request_routing_rule_name      = var.application_gateway_request_routing_rule_name
   request_routing_rule_priority  = var.application_gateway_request_routing_rule_priority
-  tags                           = var.application_gateway_tags
+  tags                           = merge(var.common_tags, var.application_gateway_tags)
 }

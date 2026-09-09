@@ -35,6 +35,12 @@ variable "purpose" {
   type        = string
 }
 
+variable "common_tags" {
+  description = "Common tags applied to selected Azure resources."
+  type        = map(string)
+  default     = {}
+}
+
 variable "vnet_name" {
   description = "Name of the virtual network."
   type        = string
@@ -65,6 +71,22 @@ variable "sp_os_type" {
 variable "sp_sku_name" {
   description = "SKU Name for the service plan"
   type        = string
+}
+
+variable "webapp_name" {
+  description = "Name of the Azure Web App."
+  type        = string
+}
+
+variable "webapp_swift_integration" {
+  description = "Optional Swift VNet integration settings for the Web App."
+  type = object({
+    enabled   = bool
+    subnet_id = optional(string)
+  })
+  default = {
+    enabled = false
+  }
 }
 
 variable "python_version" {

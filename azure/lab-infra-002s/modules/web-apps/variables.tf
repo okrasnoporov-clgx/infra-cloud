@@ -24,6 +24,18 @@ variable "vnet_integration_subnet_id" {
   default     = null
 }
 
+variable "webapp_swift_integration" {
+  description = "Optional legacy Swift VNet integration for the Web App."
+  type = object({
+    enabled   = bool
+    subnet_id = string
+  })
+  default = {
+    enabled   = false
+    subnet_id = null
+  }
+}
+
 variable "vnet_route_all_enabled" {
   description = "Route all outbound traffic from the App Service through the VNet integration subnet."
   type        = bool

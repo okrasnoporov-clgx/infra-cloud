@@ -14,7 +14,7 @@ module "service-plans" {
 module "web-apps" {
   source = "./modules/web-apps"
 
-  webapp_name                   = "app-${var.environment}-${var.purpose}"
+  webapp_name                   = var.webapp_name
   rg_name                       = module.resource-groups.name
   location                      = var.location
   service_plan_id               = module.service-plans.id
@@ -26,9 +26,13 @@ module "web-apps" {
   app_settings                  = var.webapp_app_settings
   ip_restriction_default_action = var.webapp_ip_restriction_default_action
   ip_restrictions               = var.webapp_ip_restrictions
+  webapp_swift_integration = {
+    enabled   = var.webapp_swift_integration.enabled
+    subnet_id = module.vnet.subnet_ids["appservice_integration"]
+  }
 }
 
-resource "azurerm_app_service_virtual_network_swift_connection" "webapp" {
-  app_service_id = module.web-apps.id
-  subnet_id      = module.vnet.subnet_ids["appservice_integration"]
-}
+# moved {
+#   from = azurerm_app_service_virtual_network_swift_connection.webapp
+#   to   = module.web-apps.azurerm_app_service_virtual_network_swift_connection.webapp[0]
+# }

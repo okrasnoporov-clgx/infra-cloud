@@ -6,20 +6,14 @@ module "vnet" {
   resource_group_name = module.resource-groups.name
   address_space       = var.vnet_address_space
   subnets             = var.vnet_subnets
-  tags = {
-    environment = var.environment
-    managed_by  = "terraform"
-  }
+  tags                = var.common_tags
 }
 
 resource "azurerm_private_dns_zone" "cosmosdb_mongo" {
   name                = var.cosmosdb_private_dns_zone_name
   resource_group_name = module.resource-groups.name
 
-  tags = {
-    environment = var.environment
-    managed_by  = "terraform"
-  }
+  tags = var.common_tags
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "cosmosdb_mongo" {
@@ -28,10 +22,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "cosmosdb_mongo" {
   virtual_network_id   = module.vnet.id
   registration_enabled = false
 
-  tags = {
-    environment = var.environment
-    managed_by  = "terraform"
-  }
+  tags = var.common_tags
 }
 
 module "cosmosdb_private_endpoint" {
@@ -47,5 +38,5 @@ module "cosmosdb_private_endpoint" {
   subresource_names               = var.cosmosdb_private_endpoint_subresource_names
   private_dns_zone_ids            = [azurerm_private_dns_zone.cosmosdb_mongo.id]
   private_dns_zone_group_name     = var.cosmosdb_private_endpoint_private_dns_zone_group_name
-  tags                            = var.cosmosdb_private_endpoint_tags
+  tags                            = merge(var.common_tags, var.cosmosdb_private_endpoint_tags)
 }
