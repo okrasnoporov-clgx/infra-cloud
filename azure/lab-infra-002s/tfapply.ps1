@@ -1,0 +1,1 @@
+terraform apply --var-file=.\environments\dev\dev.tfvars --var-file=.\environments\dev\dev-global.tfvars --auto-approve

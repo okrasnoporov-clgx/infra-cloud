@@ -35,6 +35,12 @@ variable "purpose" {
   type        = string
 }
 
+variable "common_tags" {
+  description = "Common tags applied to selected Azure resources."
+  type        = map(string)
+  default     = {}
+}
+
 variable "vnet_name" {
   description = "Name of the virtual network."
   type        = string
