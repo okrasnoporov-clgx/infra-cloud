@@ -1,0 +1,88 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "westeurope"
+        },
+        "networkInterfaceName": {
+            "value": "serversbifirst69"
+        },
+        "networkSecurityGroupName": {
+            "value": "ServerSBIFirst-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": []
+        },
+        "virtualNetworkName": {
+            "value": "SmallBizInfra-vnet"
+        },
+        "addressPrefix": {
+            "value": "10.0.0.0/24"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "subnetPrefix": {
+            "value": "10.0.0.0/24"
+        },
+        "publicIpAddressName": {
+            "value": "ServerSBIFirst-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineName": {
+            "value": "ServerSBIFirst"
+        },
+        "virtualMachineRG": {
+            "value": "SmallBizInfra"
+        },
+        "osDiskType": {
+            "value": "Standard_LRS"
+        },
+        "dataDisks": {
+            "value": [
+                {
+                    "lun": 0,
+                    "createOption": "attach",
+                    "caching": "None",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "ServerSBIFirst_DataDisk_0",
+                    "storageAccountType": null
+                }
+            ]
+        },
+        "dataDiskResources": {
+            "value": [
+                {
+                    "name": "ServerSBIFirst_DataDisk_0",
+                    "diskSizeGB": 50,
+                    "sku": "Standard_LRS",
+                    "creationData": {
+                        "createOption": "empty"
+                    }
+                }
+            ]
+        },
+        "virtualMachineSize": {
+            "value": "Standard_DS1_v2"
+        },
+        "adminUsername": {
+            "value": "alexbit"
+        },
+        "adminPassword": {
+            "value": "123456789QqZz"
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "smallinfrastorage001"
+        },
+        "diagnosticsStorageAccountId": {
+            "value": "/subscriptions/efa47772-a192-4398-abb9-30bd38270bb0/resourceGroups/SmallBizInfra/providers/Microsoft.Storage/storageAccounts/smallinfrastorage001"
+        }
+    }
+}
