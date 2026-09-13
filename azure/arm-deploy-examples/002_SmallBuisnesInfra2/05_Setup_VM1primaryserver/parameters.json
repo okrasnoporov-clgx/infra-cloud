@@ -1,0 +1,71 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "westeurope"
+        },
+        "networkInterfaceName": {
+            "value": "primaryserver769"
+        },
+        "networkSecurityGroupName": {
+            "value": "primaryserver-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "RDP",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "3389"
+                    }
+                }
+            ]
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/efa47772-a192-4398-abb9-30bd38270bb0/resourceGroups/SmallBizInfra/providers/Microsoft.Network/virtualNetworks/lansbi"
+        },
+        "subnetName": {
+            "value": "lansbisub"
+        },
+        "publicIpAddressName": {
+            "value": "primaryserver-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineName": {
+            "value": "primaryserver"
+        },
+        "virtualMachineRG": {
+            "value": "SmallBizInfra"
+        },
+        "osDiskType": {
+            "value": "Standard_LRS"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_DS1_v2"
+        },
+        "adminUsername": {
+            "value": "alexbit"
+        },
+        "adminPassword": {
+            "value": "123456789QqZz"
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "smallinfrastorage001"
+        },
+        "diagnosticsStorageAccountId": {
+            "value": "/subscriptions/efa47772-a192-4398-abb9-30bd38270bb0/resourceGroups/SmallBizInfra/providers/Microsoft.Storage/storageAccounts/smallinfrastorage001"
+        }
+    }
+}

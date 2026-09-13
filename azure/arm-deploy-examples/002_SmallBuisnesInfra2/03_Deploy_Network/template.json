@@ -1,0 +1,103 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "type": "string"
+        },
+        "resourceGroup": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "addressPrefix": {
+            "type": "string"
+        },
+        "subnetName": {
+            "type": "string"
+        },
+        "subnetAddressPrefix": {
+            "type": "string"
+        },
+        "enableDdosProtection": {
+            "type": "bool"
+        },
+        "firewallName": {
+            "type": "string"
+        },
+        "firewallSubnetAddressPrefix": {
+            "type": "string"
+        },
+        "publicIpAddressName": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2018-08-01",
+            "name": "[parameters('name')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "location": "[parameters('location')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('addressPrefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[parameters('subnetName')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnetAddressPrefix')]"
+                        }
+                    },
+                    {
+                        "name": "AzureFirewallSubnet",
+                        "properties": {
+                            "addressPrefix": "[parameters('firewallSubnetAddressPrefix')]"
+                        }
+                    }
+                ],
+                "enableDdosProtection": "[parameters('enableDdosProtection')]"
+            }
+        },
+        {
+            "apiVersion": "2018-08-01",
+            "type": "Microsoft.Network/publicIpAddresses",
+            "name": "[parameters('publicIpAddressName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard"
+            },
+            "properties": {
+                "publicIPAllocationMethod": "Static"
+            }
+        },
+        {
+            "apiVersion": "2018-07-01",
+            "type": "Microsoft.Network/azureFirewalls",
+            "name": "[parameters('firewallName')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId(parameters('resourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('name'))]",
+                "[resourceId(parameters('resourceGroup'), 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "IpConf",
+                        "properties": {
+                            "subnet": {
+                                "id": "[resourceId(parameters('resourceGroup'), 'Microsoft.Network/virtualNetworks/subnets', parameters('name'), 'AzureFirewallSubnet')]"
+                            },
+                            "publicIPAddress": {
+                                "id": "[resourceId(parameters('resourceGroup'), 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
